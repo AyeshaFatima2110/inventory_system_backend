@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  personal-db:
+    image: postgres:15
+    container_name: inventory_system_db
+    ports:
+      - "5433:5432"  
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventory_system_db
+    volumes:
+      - inventory_system_pgdata:/var/lib/postgresql/data
+
+volumes:
+  inventory_system_pgdata:
+
