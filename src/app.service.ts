@@ -11,11 +11,13 @@ export class AppService implements OnApplicationBootstrap , OnApplicationShutdow
   ){}
 
   async onApplicationShutdown() {
-    Model.knex(this.knex);
+    await this.knex.destroy();
+    
     
   }
   async onApplicationBootstrap() {
-    await this.knex.destroy();
+    Model.knex(this.knex);
+    
   }
   getHello(): string {
     return 'Hello World!';

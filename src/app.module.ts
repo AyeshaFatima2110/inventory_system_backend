@@ -3,13 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { KnexModule } from 'nest-knexjs';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
-      ConfigModule.forRoot({ 
+    ConfigModule.forRoot({
       cache: true,
       isGlobal: true }),
-       KnexModule.forRootAsync({
+    KnexModule.forRootAsync({
       useFactory: () => ({
         config: {
           client: 'pg',
@@ -17,7 +18,7 @@ import { ConfigModule } from '@nestjs/config';
           useNullAsDefault: true,
           connection: {
             host: process.env.DB_HOST,
-            port: parseInt(process.env.DB_PORT),
+            port: parseInt(process.env.DB_PORT || '5433', 10),
             user: process.env.USERNAME,
             password: process.env.PASSWORD,
             database: process.env.DB_NAME,
@@ -25,8 +26,8 @@ import { ConfigModule } from '@nestjs/config';
             idle_in_transaction_session_timeout: 120000, // 2 minutes
           },
           pool: {
-            min: 0,
-            max: 20,
+            min: 2,
+            max: 10,
             idleTimeoutMillis: 30000,
             acquireTimeoutMillis: 30000,
             reapIntervalMillis: 1000,
@@ -38,8 +39,11 @@ import { ConfigModule } from '@nestjs/config';
       }),
     }),
 
+    UserModule
+
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [ AppService]
+  
 })
-export class AppModule {}
+export class AppModule { }
