@@ -20,7 +20,12 @@ export class BaseModel extends DBErrors(Model){
       this.updatedAt = new Date().toISOString();
   }
 
+  $beforeDelete(queryContext: QueryContext): Promise<any> | void {
+      this.deletedAt = new Date().toISOString();
+  }
+
   uuid! : string;
   createdAt: string;
   updatedAt: string;
+  deletedAt: string;
 }
