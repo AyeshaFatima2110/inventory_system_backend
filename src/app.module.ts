@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { KnexModule } from 'nest-knexjs';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
+import { ProductModule } from './modules/product/prodcut.module';
 
 @Module({
   imports: [
@@ -39,7 +40,9 @@ import { UserModule } from './modules/user/user.module';
       }),
     }),
 
-    UserModule
+    UserModule,
+    ProductModule
+
 
   ],
   controllers: [AppController],
