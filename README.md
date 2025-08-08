@@ -30,28 +30,24 @@ Validation: DTO + Pipes
 ✅ Clean modular structure for scalability
 
 📌 Endpoints Overview
+
 🔐 Auth
 POST /auth/register
-
 POST /auth/login
 
 📦 Products
 GET /products
-
 POST /products
-
-PATCH /products/:id
-
-DELETE /products/:id
+PATCH /products/:productUUID
+DELETE /products/:productUUID
+GET /product/:productUUID
 
 🧾 Purchase Orders
 POST /purchases
-
 GET /purchases
 
 🛒 Sales
 POST /sales
-
 GET /sales
 
 ## Project setup
