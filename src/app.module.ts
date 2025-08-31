@@ -5,6 +5,8 @@ import { KnexModule } from 'nest-knexjs';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
 import { ProductModule } from './modules/product/prodcut.module';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -40,8 +42,10 @@ import { ProductModule } from './modules/product/prodcut.module';
       }),
     }),
 
+    JwtModule,
     UserModule,
-    ProductModule
+    ProductModule,
+    AuthenticationModule
 
 
   ],
