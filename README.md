@@ -33,22 +33,64 @@ Validation: DTO + Pipes
 
 🔐 Auth
 POST /authentication/register
+
+
+
 POST /authentication/login
 
 📦 Products
 GET /products
+
+
 POST /products
+
+
 PATCH /products/:productUUID
+
+
 DELETE /products/:productUUID
+
+
 GET /product/:productUUID
 
 🧾 Purchase Orders
 POST /purchases
+
 GET /purchases
+
+PATCH /purchases
+
+DELETE /purchases 
 
 🛒 Sales
 POST /sales
+
+
 GET /sales
+
+
+PATCH /sales
+
+
+DELETE /sales
+
+
+
+Supplier
+
+POST /supplier
+
+
+GET /supplier
+
+
+PATCH /supplier
+
+
+DELETE /supplier
+
+
+
 
 
 ## Project setup
