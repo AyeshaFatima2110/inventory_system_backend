@@ -7,6 +7,7 @@ import { UserModule } from './modules/user/user.module';
 import { ProductModule } from './modules/product/prodcut.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { JwtModule } from '@nestjs/jwt';
+import { SupplierModule } from './modules/supplier/supplier.module';
 
 @Module({
   imports: [
@@ -45,7 +46,8 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule,
     UserModule,
     ProductModule,
-    AuthenticationModule
+    AuthenticationModule,
+    SupplierModule
 
 
   ],
