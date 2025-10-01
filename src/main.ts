@@ -16,6 +16,14 @@ async function bootstrap() {
     .setDescription('The inventory management system API')
     .setVersion('1.0')
     .addTag('Inventory management system')
+    .addBearerAuth( // this is going to add authorize button in swagger ui
+      {
+      type : 'http',
+      scheme : 'bearer',
+      bearerFormat : 'JWT'
+    },
+    'access-token'
+    )
     .build()
 
   const documentFactory = () => SwaggerModule.createDocument(app , config);

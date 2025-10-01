@@ -21,17 +21,13 @@ export class AuthenticationService{
     const trx = await this.knex.transaction();
     try{
       const [user] = await this.userRepository.findByEmail(trx,email);
-      
       if(!user){
         throw new HttpException('Invalid email or passward!', 400);
       }
-
       const isValidPassword = await bycrpt.compare(password , user.password);
-
       if(!isValidPassword){
         throw new HttpException('Invalid email or password!',400);
       }
-
       const payload = {
         userUUID: user.uuid,
         userEmail: user.email,
@@ -39,10 +35,7 @@ export class AuthenticationService{
       }
       const accessToken = await this.jwtService.signAsync(payload);
       return {accessToken: accessToken};
-      
-
-    
-    }catch(err){
+      }catch(err){
       trx.rollback();
       throw err;
 
